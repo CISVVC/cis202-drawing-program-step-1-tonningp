@@ -33,6 +33,24 @@
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuEllipse">
+    <property name="title">
+     <string>Ellipse</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuLine">
+    <property name="title">
+     <string>Line</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuRectangle">
+    <property name="title">
+     <string>Rectangle</string>
+    </property>
+   </widget>
+   <addaction name="menuEllipse"/>
+   <addaction name="menuLine"/>
+   <addaction name="menuRectangle"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -41,10 +59,92 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionEllipse"/>
+   <addaction name="actionLine"/>
+   <addaction name="actionRectangle"/>
+   <addaction name="separator"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionEllipse">
+   <property name="text">
+    <string>Ellipse</string>
+   </property>
+   <property name="toolTip">
+    <string>Add an Ellipse</string>
+   </property>
+  </action>
+  <action name="actionLine">
+   <property name="text">
+    <string>Line</string>
+   </property>
+   <property name="toolTip">
+    <string>Add a Line</string>
+   </property>
+  </action>
+  <action name="actionRectangle">
+   <property name="text">
+    <string>Rectangle</string>
+   </property>
+   <property name="toolTip">
+    <string>Add a Rectangle</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>actionEllipse</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addEllipse()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>432</x>
+     <y>384</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionLine</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addLine()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>432</x>
+     <y>384</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>actionRectangle</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>addRectangle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>432</x>
+     <y>384</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>addEllipse()</slot>
+  <slot>addLine()</slot>
+  <slot>addRectangle()</slot>
+ </slots>
 </ui>

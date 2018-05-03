@@ -15,6 +15,11 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 
+public slots:
+    void addEllipse();
+    void addLine();
+    void addRectangle();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -16,11 +16,12 @@ class ImageView : public QGraphicsView
    signals:
 
    public slots:
-       //void mousePressEvent(QMouseEvent * e);
+       void mousePressEvent(QMouseEvent * e);
        // void mouseReleaseEvent(QMouseEvent * e);
        // void mouseDoubleClickEvent(QMouseEvent * e);
        // void mouseMoveEvent(QMouseEvent * e);
    private:
        QGraphicsScene * scene;
+       QPointF last_position;
 };
 #endif // IMAGEVIEW_H
