@@ -66,6 +66,13 @@
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionEllipse">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/ellipse.png</normaloff>:/ellipse.png</iconset>
+   </property>
    <property name="text">
     <string>Ellipse</string>
    </property>
@@ -74,6 +81,13 @@
    </property>
   </action>
   <action name="actionLine">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/line.png</normaloff>:/line.png</iconset>
+   </property>
    <property name="text">
     <string>Line</string>
    </property>
@@ -82,6 +96,13 @@
    </property>
   </action>
   <action name="actionRectangle">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/rectangle.png</normaloff>:/rectangle.png</iconset>
+   </property>
    <property name="text">
     <string>Rectangle</string>
    </property>
@@ -91,13 +112,15 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>actionEllipse</sender>
-   <signal>triggered()</signal>
+   <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
-   <slot>addEllipse()</slot>
+   <slot>addEllipse(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -111,9 +134,9 @@
   </connection>
   <connection>
    <sender>actionLine</sender>
-   <signal>triggered()</signal>
+   <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
-   <slot>addLine()</slot>
+   <slot>addLine(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -127,9 +150,9 @@
   </connection>
   <connection>
    <sender>actionRectangle</sender>
-   <signal>triggered()</signal>
+   <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
-   <slot>addRectangle()</slot>
+   <slot>addRectangle(bool)</slot>
    <hints>
     <hint type="sourcelabel">
      <x>-1</x>
@@ -143,8 +166,8 @@
   </connection>
  </connections>
  <slots>
-  <slot>addEllipse()</slot>
-  <slot>addLine()</slot>
-  <slot>addRectangle()</slot>
+  <slot>addEllipse(bool)</slot>
+  <slot>addLine(bool)</slot>
+  <slot>addRectangle(bool)</slot>
  </slots>
 </ui>

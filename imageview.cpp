@@ -12,6 +12,10 @@ ImageView::ImageView(QWidget *parent) :
         last_position.setX(0);
         last_position.setY(0);
         this->setRenderHints(QPainter::Antialiasing | QPainter::SmoothPixmapTransform);
+        connect(parent,SIGNAL(addingEllipse(bool)),this,SLOT(addingEllipse(bool)));
+        connect(parent,SIGNAL(addingLine(bool)),this,SLOT(addingLine(bool)));
+        connect(parent,SIGNAL(addingRectangle(bool)),this,SLOT(addingRectangle(bool)));
+
 }
 
 void ImageView::mousePressEvent(QMouseEvent * e)
@@ -33,4 +37,28 @@ void ImageView::mousePressEvent(QMouseEvent * e)
     }
     last_position = pos;
     //qDebug() << e->pos();
+}
+
+void ImageView::mouseMoveEvent(QMouseEvent *e)
+{
+    auto pos = mapToScene(e->pos()); // This maps "real world" coordinates to the Scene coordinates
+    scene->addEllipse(pos.x(),pos.y(),		//x,y position of the upper left hand corner
+                      5,5,				// width and height of the rectangle
+                      QPen(Qt::blue),		// the pen used for the outline
+                      QBrush(Qt::blue)); 	// the brush used for the inside of the ellipse
+}
+
+void ImageView::addingEllipse(bool toggled)
+{
+    qDebug() << "ImageView::addingEllipse " << toggled;
+}
+
+void ImageView::addingLine(bool toggled)
+{
+    qDebug() << "ImageView::addingLine " << toggled;
+}
+
+void ImageView::addingRectangle(bool toggled)
+{
+    qDebug() << "ImageView::addingRectangle " << toggled;
 }

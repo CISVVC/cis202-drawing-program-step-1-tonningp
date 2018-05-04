@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->centralWidget->layout()->addWidget(new ImageView());
+    ui->centralWidget->layout()->addWidget(new ImageView(this));
 }
 
 MainWindow::~MainWindow()
@@ -16,17 +16,32 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::addEllipse()
+void MainWindow::addEllipse(bool toggled)
 {
-    qDebug() << "Adding an Ellipse";
+    if(toggled)
+    {
+        ui->actionLine->setChecked(false);
+        ui->actionRectangle->setChecked(false);
+    }
+    emit addingEllipse(toggled);
 }
 
-void MainWindow::addLine()
+void MainWindow::addLine(bool toggled)
 {
-    qDebug() << "Adding a Line";
+    if(toggled)
+    {
+        ui->actionEllipse->setChecked(false);
+        ui->actionRectangle->setChecked(false);
+    }
+    emit addingLine(toggled);
 }
 
-void MainWindow::addRectangle()
+void MainWindow::addRectangle(bool toggled)
 {
-   qDebug() << "Adding a Rectangle";
+    if(toggled)
+    {
+        ui->actionEllipse->setChecked(false);
+        ui->actionLine->setChecked(false);
+    }
+    emit addingRectangle(toggled);
 }
