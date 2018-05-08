@@ -5,7 +5,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
 #include <QMouseEvent>
-
+enum Operation {noop,ellipse,rectangle,line};
 class ImageView : public QGraphicsView
 {
        Q_OBJECT
@@ -26,5 +26,6 @@ class ImageView : public QGraphicsView
    private:
        QGraphicsScene * scene;
        QPointF last_position;
+       Operation current_op;
 };
 #endif // IMAGEVIEW_H

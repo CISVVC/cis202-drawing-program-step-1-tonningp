@@ -26,22 +26,23 @@ void MainWindow::addEllipse(bool toggled)
     emit addingEllipse(toggled);
 }
 
+
 void MainWindow::addLine(bool toggled)
 {
-    if(toggled)
-    {
-        ui->actionEllipse->setChecked(false);
-        ui->actionRectangle->setChecked(false);
-    }
-    emit addingLine(toggled);
+//    if(toggled)
+//    {
+//        ui->actionEllipse->setChecked(false);
+//        ui->actionRectangle->setChecked(false);
+//    }
+//    emit addingLine(toggled);
 }
 
 void MainWindow::addRectangle(bool toggled)
 {
-    if(toggled)
-    {
-        ui->actionEllipse->setChecked(false);
-        ui->actionLine->setChecked(false);
-    }
-    emit addingRectangle(toggled);
+//    if(toggled)
+//    {
+//        ui->actionEllipse->setChecked(false);
+//        ui->actionLine->setChecked(false);
+//    }
+//    emit addingRectangle(toggled);
 }
