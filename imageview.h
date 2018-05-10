@@ -5,6 +5,8 @@
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
 #include <QMouseEvent>
+#include <QRubberBand>
+
 enum Operation {noop,ellipse,rectangle,line};
 class ImageView : public QGraphicsView
 {
@@ -17,7 +19,7 @@ class ImageView : public QGraphicsView
 
    public slots:
        void mousePressEvent(QMouseEvent * e);
-       // void mouseReleaseEvent(QMouseEvent * e);
+       void mouseReleaseEvent(QMouseEvent * event);
        // void mouseDoubleClickEvent(QMouseEvent * e);
        void mouseMoveEvent(QMouseEvent * e);
        void addingEllipse(bool);
@@ -26,6 +28,8 @@ class ImageView : public QGraphicsView
    private:
        QGraphicsScene * scene;
        QPointF last_position;
+       QPoint origin;
        Operation current_op;
+       QRubberBand *rubberBand;
 };
 #endif // IMAGEVIEW_H

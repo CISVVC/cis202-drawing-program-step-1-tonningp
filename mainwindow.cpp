@@ -20,8 +20,8 @@ void MainWindow::addEllipse(bool toggled)
 {
     if(toggled)
     {
-        ui->actionLine->setChecked(false);
-        ui->actionRectangle->setChecked(false);
+//        ui->actionLine->setChecked(false);
+//        ui->actionRectangle->setChecked(false);
     }
     emit addingEllipse(toggled);
 }

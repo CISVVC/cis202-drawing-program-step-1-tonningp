@@ -15,6 +15,7 @@ ImageView::ImageView(QWidget *parent) :
         connect(parent,SIGNAL(addingEllipse(bool)),this,SLOT(addingEllipse(bool)));
         connect(parent,SIGNAL(addingLine(bool)),this,SLOT(addingLine(bool)));
         connect(parent,SIGNAL(addingRectangle(bool)),this,SLOT(addingRectangle(bool)));
+        rubberBand = NULL;
 
 }
 
@@ -40,18 +41,32 @@ void ImageView::mousePressEvent(QMouseEvent * e)
     //qDebug() << e->pos();
     */
     auto pos = mapToScene(e->pos()); // This maps "real world" coordinates to the Scene coordinates
-    if(current_op == Operation::ellipse )
-    {
-        scene->addEllipse(pos.x(),pos.y(),		//x,y position of the upper left hand corner
-                  100,100,				// width and height of the rectangle
-                  QPen(Qt::blue),		// the pen used for the outline
-                  QBrush(Qt::blue)); 	// the brush used for the inside of the ellipse
-        last_position = pos;
-    }
+    origin = e->pos();
+    if (!rubberBand)
+            rubberBand = new QRubberBand(QRubberBand::Rectangle, this);
+    rubberBand->setGeometry(QRect(origin, QSize()));
+    rubberBand->show();
+
+//    if(current_op == Operation::ellipse )
+//    {
+//        scene->addEllipse(pos.x(),pos.y(),		//x,y position of the upper left hand corner
+//                  100,100,				// width and height of the rectangle
+//                  QPen(Qt::blue),		// the pen used for the outline
+//                  QBrush(Qt::blue)); 	// the brush used for the inside of the ellipse
+//        last_position = pos;
+//    }
 }
 
-void ImageView::mouseMoveEvent(QMouseEvent *e)
+void ImageView::mouseReleaseEvent(QMouseEvent *event)
 {
+   rubberBand->hide();
+   // determine selection, for example using QRect::intersects()
+   // and QRect::contains().
+}
+
+void ImageView::mouseMoveEvent(QMouseEvent *event)
+{
+    rubberBand->setGeometry(QRect(origin, event->pos()).normalized());
 }
 
 void ImageView::addingEllipse(bool toggled)
